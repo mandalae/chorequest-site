@@ -65,6 +65,7 @@
       font-size: 15px;
     }
 
+    .table-wrap { overflow-x: auto; max-width: 100%; margin-bottom: 20px; }
     .data-table {
       width: 100%;
       border-collapse: collapse;
@@ -78,7 +79,7 @@
       padding: 10px 14px;
       font-weight: 600;
     }
-    .data-table td {
+    .data-table td { overflow-wrap: anywhere;
       padding: 10px 14px;
       border-bottom: 1px solid #e4e0f5;
       vertical-align: top;
@@ -104,7 +105,7 @@
 <header>
   <a href="index.html" class="brand"><img src="img/logo.png" alt="" width="40" height="40" /> ChoreQuest</a>
   <h1>Privacy Policy</h1>
-  <p>Last updated: 16 October 2026</p>
+  <p>Last updated: 17 October 2026</p>
 </header>
 
 <main>
@@ -119,6 +120,7 @@
   <h2>2. What data we collect and why</h2>
   <p>ChoreQuest collects the minimum data needed to operate. The table below lists everything stored, where it lives, and why.</p>
 
+  <div class="table-wrap">
   <table class="data-table">
     <thead>
       <tr>
@@ -159,9 +161,9 @@
         <td>Records of when a child marked a quest complete and whether a parent approved or rejected it. Includes the date (YYYY-MM-DD) and star count.</td>
       </tr>
       <tr>
-        <td><strong>Star totals and reward goals</strong></td>
+        <td><strong>Star balance, rewards and reward requests</strong></td>
         <td>Firebase Firestore</td>
-        <td>Tracks each child's accumulated stars and any reward goal the parent sets.</td>
+        <td>Each child's star balance, the rewards a parent has created, and which child asked for which reward and whether it was approved or declined.</td>
       </tr>
       <tr>
         <td><strong>Device push token</strong></td>
@@ -176,10 +178,11 @@
       <tr>
         <td><strong>Purchase receipt / entitlement</strong></td>
         <td>RevenueCat servers</td>
-        <td>Records whether you have purchased the unlimited plan. Managed by RevenueCat — see their privacy policy at revenuecat.com/privacy.</td>
+        <td>Records whether you have purchased ChoreQuest Plus (unlimited children and rewards). Managed by RevenueCat — see their privacy policy at revenuecat.com/privacy.</td>
       </tr>
     </tbody>
   </table>
+  </div>
 
   <h2>3. Data we do NOT collect</h2>
   <ul>
@@ -205,7 +208,7 @@
   <p>We do not share your data with any other third parties, and none of these services are authorised to use your data for their own purposes.</p>
 
   <h2>6. Data retention and deletion</h2>
-  <p>Your data remains in Firestore for as long as you use the app. You can delete your account and all your family's data at any time inside the app: <strong>Parent dashboard → Delete account</strong>. Deletion is immediate and permanent. If another parent shares the family, only your account is removed and the family stays with them. You can also email <a href="mailto:c@rpediem.com">c@rpediem.com</a> and we will delete it for you within 30 days.</p>
+  <p>Your data remains in Firestore for as long as you use the app. You can delete your account and all your family's data at any time inside the app: <strong>Settings → Delete account</strong>. Deletion is immediate and permanent. If another parent shares the family, only your account is removed and the family stays with them. You can also email <a href="mailto:c@rpediem.com">c@rpediem.com</a> and we will delete it for you within 30 days.</p>
   <p>Your Firebase Authentication account (email address) will be deleted at the same time. Push tokens are deleted when a parent device logs out.</p>
 
   <h2>7. Security</h2>

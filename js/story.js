@@ -113,7 +113,7 @@
   const setStars = n => {
     shownStars = n;
     hudCount.textContent = String(n);
-    goalLbl.textContent = stage.classList.contains('reward') ? 'Movie night unlocked!' : 'Movie night ' + n + '/' + CONFIG.maxStars;
+    goalLbl.textContent = stage.classList.contains('reward') ? 'Approved: Movie night!' : 'Saving for: Movie night ' + n + '/' + CONFIG.maxStars;
     cells.forEach((c, i) => c.classList.toggle('on', i < n));
   };
   const flyStar = delay => {
