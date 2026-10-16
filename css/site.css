@@ -225,14 +225,14 @@ details p { padding: 0 0 20px; max-width: 62ch; color: var(--muted); }
   .section { padding: 56px 0; }
   .story { padding: 32px 0 24px; }
   .story-grid { display: block; }
-  .stage { top: 8px; height: 55vh; height: 55svh; min-height: 300px; box-shadow: 4px 4px 0 var(--ink); }
+  .stage { top: 8px; height: 44vh; height: 44svh; min-height: 260px; box-shadow: 4px 4px 0 var(--ink); }
   .hud { font-size: 13px; padding: 6px 8px; }
   .hud-stars { font-size: 17px; } .hud-stars .px-star { width: 18px; height: 18px; }
   .hud-goal .lbl { font-size: 12px; }
   .bar i { width: 10px; height: 10px; }
   .beat { min-height: 42vh; align-items: flex-start; padding-top: 24px; }
   .beat:nth-child(even) .card { margin-left: 0; }
-  .beats { padding-bottom: 40vh; }
+  .beats { padding-bottom: 50vh; }
   .card { padding: 14px 14px 16px; box-shadow: 4px 4px 0 var(--ink); }
   .beat.is-active .card { box-shadow: 5px 5px 0 var(--blue-dark); }
   .card h3 { font-size: 21px; } .card p { font-size: 16px; }
