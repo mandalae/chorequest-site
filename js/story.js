@@ -210,17 +210,20 @@
     visible.clear();
     // reading line: low on phones (cards sit under the sticky stage), mid-viewport on desktop
     const phone = window.matchMedia('(max-width: 700px)').matches;
-    const margin = phone ? '-72% 0px -24% 0px' : '-45% 0px -45% 0px';
+    // phones: a beat is active only when its whole card is visible below the sticky stage
+    const stageBottom = phone ? Math.ceil(parseFloat(getComputedStyle(stage).top) + stage.offsetHeight + 8) : 0;
+    const margin = phone ? '-' + stageBottom + 'px 0px 0px 0px' : '-45% 0px -45% 0px';
     io = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        const i = beats.indexOf(e.target);
+        const i = beats.indexOf(phone ? e.target.closest('.beat') : e.target);
         if (e.isIntersecting) visible.add(i); else visible.delete(i);
       });
       if (visible.size) goTo(Math.max(...visible));
       else if (beats[0].getBoundingClientRect().top > 0) goTo(-1);
-    }, { rootMargin: margin });
-    beats.forEach(b => io.observe(b));
+    }, phone ? { rootMargin: margin, threshold: 1 } : { rootMargin: margin });
+    beats.forEach(b => io.observe(phone ? b.querySelector('.card') : b));
   };
   watch();
   window.matchMedia('(max-width: 700px)').addEventListener('change', watch);
+  let rz; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(watch, 150); });
 })();
