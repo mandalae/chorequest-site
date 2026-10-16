@@ -3,1056 +3,240 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChoreQuest — Chores & Rewards for Kids</title>
-  <meta name="description" content="Turn daily chores into fun quests your kids actually want to complete. ChoreQuest helps kids stay motivated while building real-life habits — without the stress." />
-  <meta property="og:title" content="ChoreQuest — Chores & Rewards for Kids" />
-  <meta property="og:description" content="Turn daily chores into fun quests your kids actually want to complete." />
-  <meta property="og:type" content="website" />
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self';
-             style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-             font-src https://fonts.gstatic.com;
-             img-src 'self' data:;
-             script-src 'none';" />
+        content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';" />
+  <title>ChoreQuest — Chores & Rewards for Kids</title>
+  <meta name="description" content="ChoreQuest turns daily chores into quests. Kids tick them off, you approve, and stars build up towards a reward. No ads, no tracking. Coming soon to the App Store." />
+  <meta property="og:title" content="ChoreQuest — Chores become quests" />
+  <meta property="og:description" content="Kids tick off quests, you approve, stars build towards a reward. Coming soon to the App Store." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#FFF6E0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --blue:        #2196F3;
-      --blue-dark:   #1565C0;
-      --blue-light:  #BBDEFB;
-      --yellow:      #FFC107;
-      --yellow-dark: #F9A825;
-      --green:       #4CAF50;
-      --bg:          #F5F7FF;
-      --surface:     #FFFFFF;
-      --text:        #1A1A2E;
-      --text-sec:    #546E7A;
-      --text-light:  #90A4AE;
-      --radius-lg:   20px;
-      --radius-xl:   32px;
-      --shadow:      0 4px 24px rgba(33,150,243,0.12);
-      --shadow-lg:   0 12px 48px rgba(33,150,243,0.18);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── Layout helpers ──────────────────────────────────────────────────── */
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ── Nav ─────────────────────────────────────────────────────────────── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(245,247,255,0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(33,150,243,0.10);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .nav-logo-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--blue);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-    }
-
-    .nav-cta {
-      background: var(--blue);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.9rem;
-      padding: 10px 20px;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
-
-    /* ── Hero ────────────────────────────────────────────────────────────── */
-    .hero {
-      padding: 96px 0 72px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(33,150,243,0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 85% 50%, rgba(255,193,7,0.10) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--blue-light);
-      color: var(--blue-dark);
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 6px 14px;
-      border-radius: 50px;
-      margin-bottom: 28px;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 4rem);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      margin-bottom: 24px;
-      max-width: 760px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero h1 .accent { color: var(--blue); }
-    .hero h1 .yellow { color: var(--yellow-dark); }
-
-    .hero-sub {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      color: var(--text-sec);
-      max-width: 560px;
-      margin: 0 auto 48px;
-      line-height: 1.7;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 64px;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--blue);
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 700;
-      padding: 16px 32px;
-      border-radius: 50px;
-      text-decoration: none;
-      box-shadow: 0 4px 16px rgba(33,150,243,0.35);
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    }
-
-    .btn-primary:hover {
-      background: var(--blue-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(33,150,243,0.40);
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--surface);
-      color: var(--text);
-      font-size: 1rem;
-      font-weight: 700;
-      padding: 16px 32px;
-      border-radius: 50px;
-      text-decoration: none;
-      border: 2px solid var(--blue-light);
-      box-shadow: var(--shadow);
-      transition: border-color 0.2s, transform 0.15s;
-    }
-
-    .btn-secondary:hover { border-color: var(--blue); transform: translateY(-2px); }
-
-    /* ── Phone mockup ────────────────────────────────────────────────────── */
-    .hero-mockup {
-      position: relative;
-      display: inline-block;
-    }
-
-    .phone-frame {
-      width: 280px;
-      background: var(--blue);
-      border-radius: 40px;
-      padding: 12px;
-      box-shadow: var(--shadow-lg), 0 0 0 1px rgba(33,150,243,0.2);
-      display: inline-block;
-    }
-
-    .phone-screen {
-      background: var(--blue);
-      border-radius: 30px;
-      overflow: hidden;
-      aspect-ratio: 9/19;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .phone-top-bar {
-      background: rgba(255,255,255,0.15);
-      padding: 14px 16px 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .phone-child-name {
-      color: #fff;
-      font-weight: 800;
-      font-size: 1rem;
-    }
-
-    .phone-stars {
-      color: var(--yellow);
-      font-weight: 800;
-      font-size: 1rem;
-    }
-
-    .phone-quest-label {
-      color: rgba(255,255,255,0.9);
-      font-weight: 700;
-      font-size: 0.75rem;
-      padding: 8px 16px 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .phone-quests {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      padding: 4px 10px 12px;
-      flex: 1;
-    }
-
-    .phone-quest-card {
-      border-radius: 16px;
-      padding: 12px 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-    }
-
-    .phone-quest-card.done { opacity: 0.8; position: relative; }
-
-    .phone-quest-icon { font-size: 1.8rem; }
-    .phone-quest-name {
-      font-size: 0.6rem;
-      font-weight: 700;
-      color: var(--text);
-      text-align: center;
-      line-height: 1.3;
-    }
-
-    .phone-quest-stars { font-size: 0.55rem; }
-
-    .phone-done-badge {
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      background: var(--green);
-      color: #fff;
-      font-size: 0.5rem;
-      font-weight: 800;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* ── How it works ────────────────────────────────────────────────────── */
-    .section {
-      padding: 88px 0;
-    }
-
-    .section-label {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 16px;
-    }
-
-    .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      margin-bottom: 16px;
-      color: var(--text);
-    }
-
-    .section-sub {
-      font-size: 1.05rem;
-      color: var(--text-sec);
-      max-width: 520px;
-      line-height: 1.7;
-      margin-bottom: 56px;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .step {
-      background: var(--surface);
-      border-radius: var(--radius-lg);
-      padding: 32px 28px;
-      box-shadow: var(--shadow);
-      position: relative;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .step:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-
-    .step-number {
-      width: 44px;
-      height: 44px;
-      background: var(--blue);
-      color: #fff;
-      font-size: 1.1rem;
-      font-weight: 900;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    .step h3 {
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-
-    .step p {
-      font-size: 0.95rem;
-      color: var(--text-sec);
-      line-height: 1.65;
-    }
-
-    /* ── Why parents love it ─────────────────────────────────────────────── */
-    .benefits-section {
-      background: var(--blue);
-      border-radius: var(--radius-xl);
-      padding: 72px 64px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .benefits-left .section-label { color: var(--blue-light); }
-    .benefits-left .section-title { color: #fff; }
-    .benefits-left .section-sub { color: rgba(255,255,255,0.75); margin-bottom: 0; }
-
-    .benefit-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .benefit-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-
-    .benefit-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .benefit-text strong {
-      display: block;
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 2px;
-    }
-
-    .benefit-text span {
-      color: rgba(255,255,255,0.7);
-      font-size: 0.88rem;
-      line-height: 1.5;
-    }
-
-    /* ── Kids love it ────────────────────────────────────────────────────── */
-    .kids-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .kid-card {
-      border-radius: var(--radius-lg);
-      padding: 36px 28px;
-      text-align: center;
-      transition: transform 0.2s;
-    }
-
-    .kid-card:hover { transform: translateY(-4px); }
-    .kid-card:nth-child(1) { background: #FFECB3; }
-    .kid-card:nth-child(2) { background: #BBDEFB; }
-    .kid-card:nth-child(3) { background: #F3E5F5; }
-
-    .kid-card-icon { font-size: 2.8rem; margin-bottom: 16px; }
-
-    .kid-card h3 {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 10px;
-    }
-
-    .kid-card p {
-      font-size: 0.9rem;
-      color: var(--text-sec);
-      line-height: 1.6;
-    }
-
-    /* ── Features ────────────────────────────────────────────────────────── */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .feature-card {
-      background: var(--surface);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      box-shadow: var(--shadow);
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .feature-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-
-    .feature-icon-wrap {
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      flex-shrink: 0;
-    }
-
-    .feature-card:nth-child(1) .feature-icon-wrap { background: #BBDEFB; }
-    .feature-card:nth-child(2) .feature-icon-wrap { background: #FFECB3; }
-    .feature-card:nth-child(3) .feature-icon-wrap { background: #C8E6C9; }
-    .feature-card:nth-child(4) .feature-icon-wrap { background: #F3E5F5; }
-    .feature-card:nth-child(5) .feature-icon-wrap { background: #FCE4EC; }
-    .feature-card:nth-child(6) .feature-icon-wrap { background: #E8F5E9; }
-
-    .feature-card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-
-    .feature-card p {
-      font-size: 0.88rem;
-      color: var(--text-sec);
-      line-height: 1.6;
-    }
-
-    /* ── Founder note ────────────────────────────────────────────────────── */
-    .founder-section {
-      background: var(--surface);
-      border-radius: var(--radius-xl);
-      padding: 64px;
-      box-shadow: var(--shadow);
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .founder-avatar {
-      width: 96px;
-      height: 96px;
-      background: var(--blue-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.8rem;
-      flex-shrink: 0;
-    }
-
-    .founder-quote {
-      font-size: 1.2rem;
-      line-height: 1.75;
-      color: var(--text);
-      font-style: italic;
-      margin-bottom: 16px;
-    }
-
-    .founder-name {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--text-sec);
-    }
-
-    /* ── CTA ─────────────────────────────────────────────────────────────── */
-    .cta-section {
-      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
-      border-radius: var(--radius-xl);
-      padding: 88px 64px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 300px; height: 300px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 50%;
-    }
-
-    .cta-section::after {
-      content: '';
-      position: absolute;
-      bottom: -80px; left: -40px;
-      width: 240px; height: 240px;
-      background: rgba(255,193,7,0.10);
-      border-radius: 50%;
-    }
-
-    .cta-section h2 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta-section p {
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 40px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 1;
-    }
-
-    .store-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(255,255,255,0.12);
-      border: 2px solid rgba(255,255,255,0.30);
-      color: #fff;
-      padding: 14px 28px;
-      border-radius: 16px;
-      text-decoration: none;
-      backdrop-filter: blur(4px);
-      transition: background 0.2s, border-color 0.2s, transform 0.15s;
-    }
-
-    .store-btn:hover {
-      background: rgba(255,255,255,0.20);
-      border-color: rgba(255,255,255,0.55);
-      transform: translateY(-2px);
-    }
-
-    .store-btn-icon { font-size: 1.6rem; }
-
-    .store-btn-text { text-align: left; }
-    .store-btn-text small { display: block; font-size: 0.7rem; opacity: 0.8; font-weight: 500; }
-    .store-btn-text strong { display: block; font-size: 1rem; font-weight: 800; }
-
-    /* ── Footer ──────────────────────────────────────────────────────────── */
-    footer {
-      padding: 40px 0;
-      text-align: center;
-      border-top: 1px solid var(--blue-light);
-    }
-
-    .footer-logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 800;
-      font-size: 1rem;
-      color: var(--text);
-      text-decoration: none;
-      margin-bottom: 12px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 28px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-
-    .footer-links a {
-      font-size: 0.88rem;
-      color: var(--text-sec);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--blue); }
-
-    footer p {
-      font-size: 0.8rem;
-      color: var(--text-light);
-    }
-
-    /* ── Pricing pill ────────────────────────────────────────────────────── */
-    .pricing-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--surface);
-      border: 2px solid var(--blue-light);
-      border-radius: 50px;
-      padding: 10px 20px 10px 14px;
-      margin-bottom: 56px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--text-sec);
-      box-shadow: var(--shadow);
-    }
-
-    .pricing-pill .free { color: var(--green); font-weight: 800; }
-    .pricing-pill .divider-dot { width: 4px; height: 4px; background: var(--text-light); border-radius: 50%; }
-    .pricing-pill .paid { color: var(--blue); font-weight: 800; }
-
-    /* ── Responsive ──────────────────────────────────────────────────────── */
-    @media (max-width: 860px) {
-      .steps { grid-template-columns: 1fr; }
-      .benefits-section { grid-template-columns: 1fr; gap: 40px; padding: 48px 32px; }
-      .kids-grid { grid-template-columns: 1fr; }
-      .features-grid { grid-template-columns: 1fr; }
-      .founder-section { grid-template-columns: 1fr; text-align: center; padding: 40px 28px; }
-      .founder-avatar { margin: 0 auto; }
-      .cta-section { padding: 56px 28px; }
-      .phone-frame { width: 220px; }
-    }
-
-    @media (max-width: 560px) {
-      .hero { padding: 64px 0 48px; }
-      .section { padding: 64px 0; }
-      nav .nav-cta { display: none; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+  <script src="js/story.js" defer></script>
 </head>
 <body>
+<svg class="sprites" width="0" height="0" aria-hidden="true" focusable="false">
+  <symbol id="px-star" viewBox="0 0 7 7" shape-rendering="crispEdges">
+    <rect x="3" y="0" width="1" height="2"/><rect x="0" y="2" width="7" height="1"/><rect x="1" y="3" width="5" height="1"/>
+    <rect x="2" y="4" width="3" height="1"/><rect x="1" y="5" width="2" height="1"/><rect x="4" y="5" width="2" height="1"/>
+    <rect x="1" y="6" width="1" height="1"/><rect x="5" y="6" width="1" height="1"/>
+  </symbol>
+  <symbol id="px-tick" viewBox="0 0 7 6" shape-rendering="crispEdges">
+    <rect x="5" y="0" width="2" height="1"/><rect x="4" y="1" width="2" height="1"/><rect x="0" y="2" width="1" height="2"/>
+    <rect x="3" y="2" width="2" height="1"/><rect x="1" y="3" width="2" height="2"/><rect x="2" y="4" width="2" height="2"/>
+  </symbol>
+</svg>
 
-  <!-- ── Nav ──────────────────────────────────────────────────────────────── -->
-  <nav>
-    <div class="container">
-      <div class="nav-inner">
-        <a href="#" class="nav-logo">
-          <div class="nav-logo-icon">🧭</div>
-          ChoreQuest
-        </a>
-        <a href="#download" class="nav-cta">Download Free →</a>
-      </div>
+<a class="skip-link" href="#how">Skip to the plain-text overview</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="img/logo.png" alt="" width="44" height="44" />ChoreQuest</a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="btn-px" href="#pricing">Coming soon</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div>
+      <h1 id="hero-title">Chores become <span>quests.</span></h1>
+      <p class="sub">Kids tick off their daily quests, you approve them, and the stars build up to a reward.</p>
+      <a class="store-badge" href="#pricing"><small>Coming soon to the</small><strong>App Store</strong></a>
+      <p class="hero-links"><a href="#story">Play the story &darr;</a> <a href="#how">Skip to how it works &darr;</a></p>
     </div>
-  </nav>
+    <div class="hero-item" aria-hidden="true">
+      <div class="slot"><img src="img/logo.png" alt="" width="256" height="256" /></div>
+      <span class="tag ui">New quest!</span>
+    </div>
+  </div>
+</section>
 
-  <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-badge">🏆 Quests for Kids · Sanity for Parents</div>
-
-      <h1>
-        Turn chores into<br />
-        <span class="accent">quests</span> kids
-        <span class="yellow"> love</span>
-      </h1>
-
-      <p class="hero-sub">
-        Tired of constant reminders and daily battles over chores?
-        ChoreQuest transforms everyday tasks into a game — keeping kids
-        motivated while building real habits, without the stress.
-      </p>
-
-      <div class="pricing-pill">
-        <span class="free">Free</span>
-        <span class="divider-dot"></span>
-        <span>1 child included</span>
-        <span class="divider-dot"></span>
-        <span class="paid">£4.99</span>
-        <span>to unlock unlimited children</span>
-      </div>
-
-      <div class="hero-buttons">
-        <a href="#download" class="btn-primary">
-          <span>🍎</span> Download on the App Store
-        </a>
-        <a href="#download" class="btn-secondary">
-          <span>🤖</span> Get it on Google Play
-        </a>
-      </div>
-
-      <!-- Phone mockup -->
-      <div class="hero-mockup">
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="phone-top-bar">
-              <div class="phone-child-name">Emma 👧</div>
-              <div class="phone-stars">⭐ 12</div>
-            </div>
-            <div class="phone-quest-label">🧭 Today's Quests</div>
-            <div class="phone-quests">
-              <div class="phone-quest-card done" style="background:#E8F5E9; position:relative;">
-                <div class="phone-done-badge">✓</div>
-                <div class="phone-quest-icon">🛏️</div>
-                <div class="phone-quest-name">Make bed</div>
-                <div class="phone-quest-stars">⭐</div>
-              </div>
-              <div class="phone-quest-card" style="background:#FFECB3;">
-                <div class="phone-quest-icon">🦷</div>
-                <div class="phone-quest-name">Brush teeth</div>
-                <div class="phone-quest-stars">⭐</div>
-              </div>
-              <div class="phone-quest-card" style="background:#E1F5FE;">
-                <div class="phone-quest-icon">🐕</div>
-                <div class="phone-quest-name">Feed the dog</div>
-                <div class="phone-quest-stars">⭐⭐</div>
-              </div>
-              <div class="phone-quest-card done" style="background:#E8F5E9; position:relative;">
-                <div class="phone-done-badge">✓</div>
-                <div class="phone-quest-icon">🎒</div>
-                <div class="phone-quest-name">Pack bag</div>
-                <div class="phone-quest-stars">⭐⭐</div>
-              </div>
-            </div>
+<section class="story" id="story" aria-labelledby="story-title">
+  <div class="wrap">
+    <div class="story-head">
+      <h2 id="story-title">A day of quests</h2>
+      <a href="#how">Skip the story &darr;</a>
+    </div>
+    <div class="story-grid">
+      <div class="stage" id="stage" role="img" aria-label="Illustration: a three-floor family house. Rory, a boy, walks between the rooms as his quests are completed and his star count and reward bar fill up.">
+        <div class="hud" aria-hidden="true">
+          <div class="hud-stars" id="hud-stars"><svg class="px-star" viewBox="0 0 7 7"><use href="#px-star"/></svg><span id="hud-count">0</span></div>
+          <div class="hud-goal"><span class="lbl" id="goal-lbl">Movie night 0/5</span>
+            <div class="bar"><i></i><i></i><i></i><i></i><i></i></div></div>
+        </div>
+        <div class="house-wrap" aria-hidden="true">
+          <div class="house" id="house">
+            <div class="dog-pop" id="dog-pop">+2 <svg class="px-star" viewBox="0 0 7 7"><use href="#px-star"/></svg></div>
+            <div class="logo-item" id="logo-item"><img src="img/logo.png" alt="" width="256" height="256" /></div>
+            <div class="kid" id="kid"><div class="sheet"></div></div>
           </div>
         </div>
+        <div class="phone" aria-hidden="true">
+          <div class="screen">Approve &lsquo;Make your bed&rsquo;?
+            <div class="tick"><svg viewBox="0 0 7 6"><use href="#px-tick"/></svg></div></div>
+        </div>
+      </div>
+
+      <div class="beats">
+        <article class="beat" id="beat-1">
+          <div class="card">
+            <p class="kicker">Morning &middot; Kitchen</p>
+            <h3>Today's quests are up</h3>
+            <p>A parent pins the day's quests for Rory. Each one is worth stars.</p>
+            <ul class="quests">
+              <li>Make your bed <span class="stars" aria-hidden="true"><svg class="px-star" viewBox="0 0 7 7"><use href="#px-star"/></svg></span><span class="sr">1 star</span></li>
+              <li>Feed Biscuit <span class="stars" aria-hidden="true"><svg class="px-star" viewBox="0 0 7 7"><use href="#px-star"/></svg><svg class="px-star" viewBox="0 0 7 7"><use href="#px-star"/></svg></span><span class="sr">2 stars</span></li>
+              <li>Pack your school bag <span class="stars" aria-hidden="true"><svg class="px-star" viewBox="0 0 7 7"><use href="#px-star"/></svg></span><span class="sr">1 star</span></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="beat" id="beat-2">
+          <div class="card">
+            <p class="kicker">Quest 1 &middot; Bedroom</p>
+            <h3>Rory makes his bed</h3>
+            <p>He taps the quest done in child mode, where he only sees his own quests.</p>
+            <span class="banner">Quest complete! Waiting for a grown-up&hellip;</span>
+          </div>
+        </article>
+
+        <article class="beat" id="beat-3">
+          <div class="card">
+            <p class="kicker">Grown-up check</p>
+            <h3>You approve it</h3>
+            <p>A parent sees the prompt: approve &lsquo;Make your bed&rsquo;? One tap, and Rory earns his star.</p>
+            <span class="banner">+1 star &middot; 1 of 5</span>
+          </div>
+        </article>
+
+        <article class="beat" id="beat-4">
+          <div class="card">
+            <p class="kicker">Quest 2 &middot; Garden</p>
+            <h3>Biscuit gets breakfast</h3>
+            <p>Feeding the dog is a bigger job, so it is worth two stars. The reward bar fills up.</p>
+            <span class="banner">+2 stars &middot; 3 of 5</span>
+          </div>
+        </article>
+
+        <article class="beat" id="beat-5">
+          <div class="card">
+            <p class="kicker">Quest 3 &amp; a bonus</p>
+            <h3>Bag packed, teeth brushed</h3>
+            <p>Rory packs his school bag for one more star. A bonus quest, brush your teeth, adds the last one.</p>
+            <span class="banner">+1 +1 &middot; 5 of 5</span>
+          </div>
+        </article>
+
+        <article class="beat" id="beat-6">
+          <div class="card">
+            <p class="kicker">Reward unlocked</p>
+            <h3>Movie night!</h3>
+            <p>Five stars fill the bar and the goal is reached. Chores turn into a habit, and the reward is something to look forward to.</p>
+            <a class="store-badge" href="#pricing"><small>Coming soon to the</small><strong>App Store</strong></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="plain">
+  <section class="section" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <h2 id="how-title">How it works</h2>
+      <p class="lead">Three steps, no fuss.</p>
+      <ol class="steps">
+        <li><h3>Create quests</h3><p>Add daily or weekly chores for each child and choose how many stars each is worth.</p></li>
+        <li><h3>Kids tick them off</h3><p>Your child opens their own simple view and marks quests as done.</p></li>
+        <li><h3>You approve</h3><p>Check the work and approve it. Stars build up towards a reward you set.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section alt" id="features" aria-labelledby="features-title">
+    <div class="wrap">
+      <h2 id="features-title">Features</h2>
+      <p class="lead">Everything you need, nothing you don't.</p>
+      <div class="features">
+        <div><h3>Daily and weekly quests</h3><p>Each quest is worth one to three stars. Set them once and they come back when they should.</p></div>
+        <div><h3>Reward goals</h3><p>Pick a reward, like movie night or an ice cream. A progress bar shows how close your child is.</p></div>
+        <div><h3>Child mode with a parent PIN</h3><p>Kids only see their own quests. A grown-up taps the Grown-ups button and enters the PIN to leave. Forgot the PIN? Use your parent password.</p></div>
+        <div><h3>Two-parent families</h3><p>Share a family with a 6-character family code. Both parents can set up quests and approve them.</p></div>
+        <div><h3>Evening reminder</h3><p>At 7pm the app reminds you to review completed quests.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ── How it works ──────────────────────────────────────────────────────── -->
-  <section class="section">
-    <div class="container">
-      <div class="section-label">🧭 How it works</div>
-      <h2 class="section-title">Three simple steps</h2>
-      <p class="section-sub">
-        Set up in minutes. No complicated configuration — just quests, stars, and rewards.
-      </p>
-
-      <div class="steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <h3>Create quests</h3>
-          <p>
-            Add daily or weekly quests for each child. Choose from 20 icons,
-            set how many stars completing it earns, and you're done.
-          </p>
-        </div>
-        <div class="step">
-          <div class="step-number">2</div>
-          <h3>Kids complete them</h3>
-          <p>
-            Kids open their own bright, simple view and tap a quest card when it's done.
-            It shows up instantly on your parent dashboard for approval.
-          </p>
-        </div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <h3>Earn rewards</h3>
-          <p>
-            Set a reward goal — movie night, ice cream, extra game time. Stars accumulate,
-            the progress bar fills up, and kids stay motivated toward something real.
-          </p>
-        </div>
+  <section class="section" id="pricing" aria-labelledby="pricing-title">
+    <div class="wrap">
+      <h2 id="pricing-title">Pricing</h2>
+      <p class="lead">Simple and honest.</p>
+      <div class="price-grid">
+        <div class="price"><h3>Free</h3><div class="amt">&pound;0</div><p>One child, all features.</p></div>
+        <div class="price paid"><h3>Unlimited Children</h3><div class="amt">&pound;4.99</div><p>One-off purchase. Add as many children as you like.</p></div>
       </div>
+      <p class="price-note"><strong>No subscription and no ads.</strong> The other parent in your family can use it too through Apple Family Sharing. ChoreQuest is coming soon to the App Store.</p>
     </div>
   </section>
 
-  <!-- ── Why parents love it ───────────────────────────────────────────────── -->
-  <section class="section" style="padding-top: 0;">
-    <div class="container">
-      <div class="benefits-section">
-        <div class="benefits-left">
-          <div class="section-label">✨ For parents</div>
-          <h2 class="section-title">Finally — chores without the battle</h2>
-          <p class="section-sub">
-            Kids stay motivated on their own. You approve completions, set goals,
-            and watch the habits form — without nagging every ten minutes.
-          </p>
-        </div>
-        <ul class="benefit-list">
-          <li class="benefit-item">
-            <div class="benefit-icon">✅</div>
-            <div class="benefit-text">
-              <strong>No more nagging</strong>
-              <span>Kids are motivated by stars and goals, not reminders from you.</span>
-            </div>
-          </li>
-          <li class="benefit-item">
-            <div class="benefit-icon">🏆</div>
-            <div class="benefit-text">
-              <strong>Build real responsibility</strong>
-              <span>Consistent routines become genuine habits over time.</span>
-            </div>
-          </li>
-          <li class="benefit-item">
-            <div class="benefit-icon">🎯</div>
-            <div class="benefit-text">
-              <strong>Meaningful goals</strong>
-              <span>Kids can see exactly what they're working towards — not just arbitrary stars.</span>
-            </div>
-          </li>
-          <li class="benefit-item">
-            <div class="benefit-icon">👨‍👩‍👧‍👦</div>
-            <div class="benefit-text">
-              <strong>Works for the whole family</strong>
-              <span>Separate quests and progress for each child, all in one place.</span>
-            </div>
-          </li>
-        </ul>
-      </div>
+  <section class="section alt" aria-labelledby="privacy-title">
+    <div class="wrap">
+      <h2 id="privacy-title">Privacy</h2>
+      <p class="privacy-p">No ads and no tracking. Children don't need accounts, and you can delete your account from inside the app. Read the full <a href="privacy.html">privacy policy</a>.</p>
     </div>
   </section>
 
-  <!-- ── Why kids love it ──────────────────────────────────────────────────── -->
-  <section class="section">
-    <div class="container">
-      <div class="section-label">🎮 For kids</div>
-      <h2 class="section-title">Chores? They actually want to do them.</h2>
-      <p class="section-sub">
-        A bright, simple interface designed for young children. Big cards,
-        big icons, instant satisfaction when they tap a quest done.
-      </p>
-
-      <div class="kids-grid">
-        <div class="kid-card">
-          <div class="kid-card-icon">🏆</div>
-          <h3>Complete quests</h3>
-          <p>
-            Every task is a quest to conquer. Tap it done and watch the star count grow.
-          </p>
-        </div>
-        <div class="kid-card">
-          <div class="kid-card-icon">⭐</div>
-          <h3>Feel the progress</h3>
-          <p>
-            Stars add up visibly. A progress bar shows exactly how close they are to their reward.
-          </p>
-        </div>
-        <div class="kid-card">
-          <div class="kid-card-icon">🎯</div>
-          <h3>Earn real rewards</h3>
-          <p>
-            Movie night, ice cream, extra game time — something worth working for every time.
-          </p>
-        </div>
-      </div>
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <h2 id="faq-title">Questions</h2>
+      <details><summary>Which devices does it run on?</summary><p>iPhone and iPad.</p></details>
+      <details><summary>Is there an Android version?</summary><p>Not yet.</p></details>
+      <details><summary>Do my kids need their own device?</summary><p>No. Child mode works on your phone, or on a tablet your child uses.</p></details>
+      <details><summary>What if I forget the PIN?</summary><p>Tap Grown-ups, then &ldquo;Forgot PIN?&rdquo;. After you enter your parent password you can choose a new PIN.</p></details>
+      <details><summary>Is it a subscription?</summary><p>No. The app is free for one child, and unlimited children is a single &pound;4.99 purchase.</p></details>
+      <details><summary>How do I delete my data?</summary><p>You can delete your account in the app. See the <a href="privacy.html">privacy policy</a> for details, or <a href="support.html">contact support</a>.</p></details>
     </div>
   </section>
 
-  <!-- ── Features ─────────────────────────────────────────────────────────── -->
-  <section class="section" style="padding-top: 0;">
-    <div class="container">
-      <div class="section-label">🚀 Features</div>
-      <h2 class="section-title">Everything you need, nothing you don't</h2>
-      <p class="section-sub">
-        Designed to be simple enough for a six-year-old, and powerful enough to run a household.
-      </p>
-
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon-wrap">📅</div>
-          <div>
-            <h3>Daily & weekly quests</h3>
-            <p>Set the right cadence for each task. Daily for brushing teeth, weekly for tidying a room.</p>
-          </div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon-wrap">⭐</div>
-          <div>
-            <h3>Star reward system</h3>
-            <p>Each quest earns 1–3 stars. Parents approve completions before stars are awarded.</p>
-          </div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon-wrap">🎯</div>
-          <div>
-            <h3>Reward goals</h3>
-            <p>Set a goal with a custom description and star target. Kids track progress in real time.</p>
-          </div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon-wrap">🔒</div>
-          <div>
-            <h3>Child device mode</h3>
-            <p>Lock a tablet or old phone to a single child's quest view, secured with a PIN.</p>
-          </div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon-wrap">🔔</div>
-          <div>
-            <h3>Approval reminders</h3>
-            <p>A daily 7pm notification reminds you to check and approve completed quests.</p>
-          </div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon-wrap">👨‍👩‍👧</div>
-          <div>
-            <h3>Multi-parent support</h3>
-            <p>Share a family code so both parents can log in and manage quests together.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Founder note ──────────────────────────────────────────────────────── -->
-  <section class="section" style="padding-top: 0;">
-    <div class="container">
-      <div class="founder-section">
-        <div class="founder-avatar">👨‍👧</div>
+  <section class="section alt" aria-labelledby="maker-title">
+    <div class="wrap">
+      <div class="maker">
+        <img src="img/logo.png" alt="" width="96" height="96" />
         <div>
-          <p class="founder-quote">
-            "I built ChoreQuest to solve a real problem in my own home — making chores less
-            of a daily battle and more of a routine my kids actually look forward to. It
-            started as a weekend project and turned into something my family genuinely uses
-            every day."
-          </p>
-          <p class="founder-name">— Built by a parent, for parents</p>
+          <h2 id="maker-title">Made by a parent</h2>
+          <p>ChoreQuest is built by a parent in the UK who wanted a calmer way to get chores done at home. It has no ads and no tracking.</p>
         </div>
       </div>
     </div>
   </section>
+</div>
+</main>
 
-  <!-- ── CTA ──────────────────────────────────────────────────────────────── -->
-  <section class="section" id="download" style="padding-top: 0;">
-    <div class="container">
-      <div class="cta-section">
-        <h2>Start your first quest today</h2>
-        <p>
-          Download ChoreQuest free and turn everyday tasks into something
-          your kids actually enjoy.
-        </p>
-        <div class="cta-buttons">
-          <a href="#" class="store-btn">
-            <span class="store-btn-icon">🍎</span>
-            <div class="store-btn-text">
-              <small>Download on the</small>
-              <strong>App Store</strong>
-            </div>
-          </a>
-          <a href="#" class="store-btn">
-            <span class="store-btn-icon">🤖</span>
-            <div class="store-btn-text">
-              <small>Get it on</small>
-              <strong>Google Play</strong>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Footer ───────────────────────────────────────────────────────────── -->
-  <footer>
-    <div class="container">
-      <a href="#" class="footer-logo">
-        <span>🧭</span> ChoreQuest
-      </a>
-      <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Use</a>
-        <a href="support.html">Support</a>
-      </div>
-      <p>© 2026 ChoreQuest. Made with ❤️ by a parent.</p>
-    </div>
-  </footer>
-
+<footer class="foot">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="img/logo.png" alt="" width="36" height="36" />ChoreQuest</a>
+    <nav aria-label="Footer">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html">Support</a>
+    </nav>
+    <small>&copy; 2026 Chris Skaaning</small>
+  </div>
+</footer>
 </body>
 </html>
