@@ -162,9 +162,9 @@
         <td>Stored when a parent grants notification permission. Used to send a push notification when a child completes a quest. Never used for marketing.</td>
       </tr>
       <tr>
-        <td><strong>Child device PIN (hashed)</strong></td>
-        <td>The device (expo-secure-store) and Firebase Firestore</td>
-        <td>A PIN that locks the child-mode device so the child cannot exit. Stored as a SHA-256 hash on the device and in your family's data, so it can be checked from a parent's device. The PIN itself is never stored.</td>
+        <td><strong>Parent PIN (hashed)</strong></td>
+        <td>Device only (expo-secure-store)</td>
+        <td>A 4-digit PIN a grown-up enters to leave child mode. Stored only on the device as a SHA-256 hash; the PIN itself is never stored, and it never leaves the device.</td>
       </tr>
       <tr>
         <td><strong>Purchase receipt / entitlement</strong></td>
@@ -203,7 +203,7 @@
 
   <h2>7. Security</h2>
   <p>All data in transit is encrypted via HTTPS/TLS. Data at rest is protected by Firebase's built-in encryption. Access to your family's data in Firestore is enforced by security rules that require authentication — no other user can read or modify your family's data.</p>
-  <p>Child device PINs are hashed with SHA-256 before being stored; the PIN itself is never stored or transmitted. Child devices sign in anonymously: no email address or personal details are needed for a child.</p>
+  <p>Parent PINs are hashed with SHA-256 and kept only on the device. Child mode runs under the parent's account: children never need an email address, password or account of their own.</p>
 
   <h2>8. Your rights</h2>
   <p>Depending on where you live, you may have the right to access, correct, or delete the personal data we hold about you. To exercise any of these rights, email <a href="mailto:c@rpediem.com">c@rpediem.com</a>. We will respond within 30 days.</p>
