@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; style-src 'unsafe-inline'; font-src https://fonts.gstatic.com; connect-src 'none'; frame-ancestors 'none';" />
+  <title>Privacy Policy — ChoreQuest</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f9f6f0;
+      color: #2d2a26;
+      line-height: 1.7;
+    }
+
+    header {
+      background: #5c4fcf;
+      color: #fff;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+    header a {
+      display: inline-block;
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; margin-bottom: 8px; }
+    header p  { opacity: 0.85; font-size: 15px; }
+
+    main {
+      max-width: 720px;
+      margin: 48px auto;
+      padding: 0 24px 80px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #3d2fa3;
+      margin: 40px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #ede9ff;
+    }
+
+    p  { margin-bottom: 14px; }
+    ul { margin: 0 0 14px 20px; }
+    li { margin-bottom: 6px; }
+
+    .highlight {
+      background: #ede9ff;
+      border-left: 4px solid #5c4fcf;
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+    .data-table th {
+      background: #5c4fcf;
+      color: #fff;
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 600;
+    }
+    .data-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #e4e0f5;
+      vertical-align: top;
+    }
+    .data-table tr:nth-child(even) td { background: #f3f0ff; }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: #888;
+      border-top: 1px solid #e4e0f5;
+    }
+    footer a { color: #5c4fcf; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html">🧭 ChoreQuest</a>
+  <h1>Privacy Policy</h1>
+  <p>Last updated: 16 October 2026</p>
+</header>
+
+<main>
+
+  <div class="highlight">
+    <strong>The short version:</strong> ChoreQuest stores only what is needed to run the app — your email address, your family's data, and your children's first names. We do not sell data, show ads, or share anything with third parties beyond the cloud services that power the app.
+  </div>
+
+  <h2>1. Who we are</h2>
+  <p>ChoreQuest is an independent app developed by Chris Skaaning. If you have any questions about this policy, contact us at <a href="mailto:c@rpediem.com">c@rpediem.com</a>.</p>
+
+  <h2>2. What data we collect and why</h2>
+  <p>ChoreQuest collects the minimum data needed to operate. The table below lists everything stored, where it lives, and why.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Where stored</th>
+        <th>Why</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Parent email address</strong></td>
+        <td>Firebase Authentication</td>
+        <td>Used to log in. No marketing emails are sent.</td>
+      </tr>
+      <tr>
+        <td><strong>Family name</strong></td>
+        <td>Firebase Firestore</td>
+        <td>Displayed in the app to identify the family.</td>
+      </tr>
+      <tr>
+        <td><strong>Family join code</strong></td>
+        <td>Firebase Firestore</td>
+        <td>A 6-character code that lets a second parent join the same family.</td>
+      </tr>
+      <tr>
+        <td><strong>Children's first names and chosen avatar</strong></td>
+        <td>Firebase Firestore</td>
+        <td>Displayed in the app. Avatars are emoji-based presets — no photos are collected.</td>
+      </tr>
+      <tr>
+        <td><strong>Quest (chore) names, icons, and settings</strong></td>
+        <td>Firebase Firestore</td>
+        <td>The quests you create for your children.</td>
+      </tr>
+      <tr>
+        <td><strong>Completion records</strong></td>
+        <td>Firebase Firestore</td>
+        <td>Records of when a child marked a quest complete and whether a parent approved or rejected it. Includes the date (YYYY-MM-DD) and star count.</td>
+      </tr>
+      <tr>
+        <td><strong>Star totals and reward goals</strong></td>
+        <td>Firebase Firestore</td>
+        <td>Tracks each child's accumulated stars and any reward goal the parent sets.</td>
+      </tr>
+      <tr>
+        <td><strong>Device push token</strong></td>
+        <td>Firebase Firestore</td>
+        <td>Stored when a parent grants notification permission. Used to send a push notification when a child completes a quest. Never used for marketing.</td>
+      </tr>
+      <tr>
+        <td><strong>Child device PIN (hashed)</strong></td>
+        <td>The device (expo-secure-store) and Firebase Firestore</td>
+        <td>A PIN that locks the child-mode device so the child cannot exit. Stored as a SHA-256 hash on the device and in your family's data, so it can be checked from a parent's device. The PIN itself is never stored.</td>
+      </tr>
+      <tr>
+        <td><strong>Purchase receipt / entitlement</strong></td>
+        <td>RevenueCat servers</td>
+        <td>Records whether you have purchased the unlimited plan. Managed by RevenueCat — see their privacy policy at revenuecat.com/privacy.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Data we do NOT collect</h2>
+  <ul>
+    <li>Photos or camera access</li>
+    <li>Location data</li>
+    <li>Contacts</li>
+    <li>Advertising identifiers</li>
+    <li>Behavioural analytics or usage tracking</li>
+    <li>Children's ages or dates of birth</li>
+  </ul>
+
+  <h2>4. Children's privacy (COPPA / UK GDPR)</h2>
+  <p>ChoreQuest is designed for use by parents with young children. Children do not create accounts and do not provide any personal information to the app themselves. The only child data stored — first name and chosen avatar — is entered by the parent.</p>
+  <p>We do not knowingly collect any personal information directly from children under 13. If you believe we have inadvertently collected such data, please contact us immediately and we will delete it.</p>
+
+  <h2>5. Cloud services we use</h2>
+  <p>ChoreQuest is built on the following third-party services, each of which processes data as a data processor on our behalf:</p>
+  <ul>
+    <li><strong>Google Firebase</strong> (Authentication + Firestore) — stores account credentials and all family data. Hosted in the EU/US depending on your region. See <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy</a>.</li>
+    <li><strong>RevenueCat</strong> — manages in-app purchases and entitlements. See <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat Privacy</a>.</li>
+    <li><strong>Expo (push notifications)</strong> — push tokens are forwarded to Expo's push API when a quest completion notification is sent. See <a href="https://expo.dev/privacy" target="_blank" rel="noopener">Expo Privacy</a>.</li>
+  </ul>
+  <p>We do not share your data with any other third parties, and none of these services are authorised to use your data for their own purposes.</p>
+
+  <h2>6. Data retention and deletion</h2>
+  <p>Your data remains in Firestore for as long as you use the app. You can delete your account and all your family's data at any time inside the app: <strong>Parent dashboard → Delete account</strong>. Deletion is immediate and permanent. If another parent shares the family, only your account is removed and the family stays with them. You can also email <a href="mailto:c@rpediem.com">c@rpediem.com</a> and we will delete it for you within 30 days.</p>
+  <p>Your Firebase Authentication account (email address) will be deleted at the same time. Push tokens are deleted when a parent device logs out.</p>
+
+  <h2>7. Security</h2>
+  <p>All data in transit is encrypted via HTTPS/TLS. Data at rest is protected by Firebase's built-in encryption. Access to your family's data in Firestore is enforced by security rules that require authentication — no other user can read or modify your family's data.</p>
+  <p>Child device PINs are hashed with SHA-256 before being stored; the PIN itself is never stored or transmitted. Child devices sign in anonymously: no email address or personal details are needed for a child.</p>
+
+  <h2>8. Your rights</h2>
+  <p>Depending on where you live, you may have the right to access, correct, or delete the personal data we hold about you. To exercise any of these rights, email <a href="mailto:c@rpediem.com">c@rpediem.com</a>. We will respond within 30 days.</p>
+
+  <h2>9. Changes to this policy</h2>
+  <p>If we make material changes to this policy, we will update the "last updated" date at the top of this page. Continued use of the app after changes are posted constitutes acceptance of the updated policy.</p>
+
+  <h2>10. Contact</h2>
+  <p>Questions or requests: <a href="mailto:c@rpediem.com">c@rpediem.com</a></p>
+
+</main>
+
+<footer>
+  <p><a href="index.html">ChoreQuest</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; &copy; 2026 Chris Skaaning &nbsp;·&nbsp; <a href="terms.html">Terms</a> &nbsp;·&nbsp; <a href="support.html">Support</a></p>
+</footer>
+
+</body>
+</html>
