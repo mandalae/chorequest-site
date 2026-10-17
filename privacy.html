@@ -190,9 +190,19 @@
     <li>Location data</li>
     <li>Contacts</li>
     <li>Advertising identifiers</li>
-    <li>Behavioural analytics or usage tracking</li>
+    <li>Advertising or cross-app tracking of any kind</li>
+    <li>Usage statistics or crash reports, unless you switch them on (see below)</li>
     <li>Children's ages or dates of birth</li>
   </ul>
+
+  <h3>Optional: anonymous usage statistics and crash reports</h3>
+  <p>These are <strong>off unless you say yes</strong>. After you set up your family, the app asks once whether you'd like to help improve ChoreQuest. You can change your answer any time in <strong>Settings → Your data &amp; privacy</strong>, and switching it off stops sending straight away.</p>
+  <p>If you switch it on, the app sends:</p>
+  <ul>
+    <li><strong>Anonymous usage counts</strong> to TelemetryDeck: the name of an action (for example "quest completed" or "reward requested") and, for a few actions, a coarse detail such as the icon chosen or a star-cost range. They are tied to a random number created on your device, which is reset when you switch this off or sign out. No names, email addresses, quest or reward text, account IDs or device identifiers are ever sent, and nothing at all about your children beyond the name of the action.</li>
+    <li><strong>Crash reports</strong> to Sentry (EU data region): technical details of an error (app version, device model, the code location of the crash). Email addresses and database IDs are stripped before sending, and no user information is attached.</li>
+  </ul>
+  <p>This data is used only to find bugs and to see which features are used. It is never sold, shared with advertisers, or combined with data from other apps.</p>
 
   <h2>4. Children's privacy (COPPA / UK GDPR)</h2>
   <p>ChoreQuest is designed for use by parents, guardians and carers with young children. Children do not create accounts and do not provide any personal information to the app themselves. The only child data stored — first name and chosen avatar — is entered by the adult account holder.</p>
@@ -203,6 +213,8 @@
   <ul>
     <li><strong>Google Firebase</strong> (Authentication + Firestore) — stores account credentials and all family data. Hosted in the EU/US depending on your region. See <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy</a>.</li>
     <li><strong>RevenueCat</strong> — manages in-app purchases and entitlements. See <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat Privacy</a>.</li>
+    <li><strong>TelemetryDeck</strong> (only if you switch on usage statistics) — anonymous usage counts, processed in the EU. See <a href="https://telemetrydeck.com/privacy/" target="_blank" rel="noopener">TelemetryDeck Privacy</a>.</li>
+    <li><strong>Sentry</strong> (only if you switch on crash reports) — crash reports, stored in Sentry's EU data region. See <a href="https://sentry.io/privacy/" target="_blank" rel="noopener">Sentry Privacy</a>.</li>
     <li><strong>Expo (push notifications)</strong> — push tokens are forwarded to Expo's push API when a quest completion notification is sent. See <a href="https://expo.dev/privacy" target="_blank" rel="noopener">Expo Privacy</a>.</li>
   </ul>
   <p>We do not share your data with any other third parties, and none of these services are authorised to use your data for their own purposes.</p>
@@ -216,7 +228,7 @@
   <p>Grown-up PINs are hashed with SHA-256 and kept only on the device. Child mode runs under the account holder's account: children never need an email address, password or account of their own.</p>
 
   <h2>8. Your rights</h2>
-  <p>Depending on where you live, you may have the right to access, correct, or delete the personal data we hold about you. To exercise any of these rights, email <a href="mailto:c@rpediem.com">c@rpediem.com</a>. We will respond within 30 days.</p>
+  <p>Depending on where you live, you may have the right to access, correct, or delete the personal data we hold about you. You can do most of this yourself in the app: <strong>Settings → Download my data</strong> gives you a copy of everything stored about you and your family, you can edit names, quests and rewards at any time, and <strong>Settings → Delete account</strong> removes it all. If you can't sign in, or want help, email <a href="mailto:c@rpediem.com">c@rpediem.com</a>. We will respond within 30 days.</p>
 
   <h2>9. Changes to this policy</h2>
   <p>If we make material changes to this policy, we will update the "last updated" date at the top of this page. Continued use of the app after changes are posted constitutes acceptance of the updated policy.</p>
